@@ -1,6 +1,4 @@
 class String:
-    def __init__(self):
-        self.userInput = None
     def getString(self):
         self.userInput = input()
     def printString(self):   
