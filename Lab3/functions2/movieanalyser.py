@@ -76,7 +76,7 @@ movies = [
 }
 ]
 
-def high_imdb(movie):
+def is_high_imdb(movie):
     return movie["imdb"] > 5.5
 
 def high_imdb_movies(movies):
