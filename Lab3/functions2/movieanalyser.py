@@ -83,7 +83,11 @@ def high_imdb_movies(movies):
     return [movie for movie in movies if movie["imdb"] > 5.5]
 
 def movies_by_category(movies, category):
-    return [movie for movie in movies if movie["category"] == category]
+    my_list = []
+    for i in movies:
+        if(i["category"] == category):
+            my_list.append(i["name"])
+    return my_list
 
 def average_imdb(movies):
     imdb_scores = [movie["imdb"] for movie in movies]
@@ -95,6 +99,6 @@ def average_imdb_by_category(movies, category):
 
 # print(is_high_imdb(movies[0])) -> True
 # print(high_imdb_movies(movies)) (list)
-# print(movies, "Thriller")
+# print(movies_by_category(movies, "Romance")) -> ['The Choice', 'Colonia', 'Love', 'Bride Wars', 'We Two']
 # print(average_imdb(movies)) -> 6.486666666666667
 # print(average_imdb_by_category(movies, "Romance")) -> 6.44 
