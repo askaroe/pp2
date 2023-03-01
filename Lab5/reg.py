@@ -63,11 +63,13 @@ def splitUpper():
             x1 = x[:i]
             x2 = x[i + 1:]
             x = x1 + ' ' + x2
-    l = x.split(' ')
+    # l = x.split(' ')
+    l = re.split("\s", x)
     l2 = []
     for i in l:
         if len(i) != 0:
             l2.append(i)
+    print(l2)
 # splitUpper()
 
 def splitUpper2():
