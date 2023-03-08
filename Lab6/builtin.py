@@ -43,8 +43,8 @@ def trueTuple():
     cnt = 0
     t = (0, True, 6, "Olzhas", 1, False)
     for i in t:
-        if(bool(i)):
+        if(bool(i) == False):
             return False
     return True
 # i could use all()
-# print(trueTuple())
+print(trueTuple())
