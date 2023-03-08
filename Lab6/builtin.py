@@ -46,4 +46,5 @@ def trueTuple():
         if(bool(i)):
             return False
     return True
+# i could use all()
 # print(trueTuple())

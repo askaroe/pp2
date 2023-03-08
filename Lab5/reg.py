@@ -19,10 +19,12 @@ def sequenceOfLowerLetters():
     for i in range(0, len(txt) - 1):
         x1 = re.search("[a-z]", txt[i])
         x2 = re.search("[a-z]", txt[i + 1])
+        # print(type(x2))
         if x1 and x2:
             l.append(txt[i] + "_" + txt[i + 1])
     print(l)
-# our problem was if a_i_a_b it printed a_i and a_b, I fixed this problem via using two searches that return object
+# my problem was if a_i_a_b it printed a_i and a_b, I fixed this problem via using two searches that return object
+# if no match search returns [] if there is match search returns <class 're.Match'> 
 # sequenceOfLowerLetters()
 
 def findAa():
@@ -33,9 +35,9 @@ def findAa():
 
 def startWithAEndWithB():
     txt = input()
-    x = re.findall("a.*b", txt)
+    x = re.findall("^a.*b$", txt)
     print(x)
-# startWithAEndWithB()
+startWithAEndWithB()
 
 def replace():
     txt = input()
@@ -69,6 +71,7 @@ def splitUpper():
     for i in l:
         if len(i) != 0:
             l2.append(i)
+    print(l) # if AskarOralkhan [ [], 'skar', 'ralkhan' ]
     print(l2)
 # splitUpper()
 
@@ -88,5 +91,5 @@ def camelToSnake():
     s = ''
     for i in range(0, len(x)):
         s += x[i].lower() + '_'
-    print(s[:-1])
-# camelToSnake()
+    print(s[:-1]) # deleting last character
+camelToSnake()

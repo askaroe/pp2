@@ -1,3 +1,4 @@
+# generators generate numbers on-the-fly, it can be more effective with memory
 def squares():
     n=int(input())
     a=(int(i)**2 for i in range(0,n))
@@ -13,7 +14,7 @@ def evens():
 
 def devesibility():
     n = int(input())
-    x = lambda x : x if (x % 3 == 0 and x % 4 == 0) or x == 0 else "o"
+    x = lambda i : i if (i % 3 == 0 and i % 4 == 0) or i == 0 else "o"
     a = (x(i) for i in range(0, n))
     for i in range(n):
         y = next(a)

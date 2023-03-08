@@ -43,7 +43,7 @@ def findingFilenameAndDirectory():
     path = r"C:\Users\Аскар\Desktop\code\python\Lab6\builtin.py"
     if os.access(path, os.F_OK):
         print("Your path exists :D, trying to find the directory and filename")
-        x = os.path.split(path)
+        x = os.path.split(path) # slpits to the directory(except file) and name of file
         print("The directory of the file:", x[0])
         print("The name of file:", x[1])
     else:
@@ -65,7 +65,7 @@ def listToFile():
     my_list = [1, "Askar", "Lenovo laptops are the best!", 4, "I hate stairs"]
 
     f = open(path, "w")
-    f.write("Let me write this list to your file:\n")
+    print("Let me write this list to your file:\n")
     print(my_list)
     for i in my_list:
         f.write(str(i) + " ")

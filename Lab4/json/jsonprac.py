@@ -10,6 +10,8 @@ print("DN", " " * 40, "Description ", "speed", " " * 10, "MTU")
 print("-" * 41, "-" * 12, "-" * 13, "\t", "-" * 4)
 for imdata in data["imdata"]:
     for i in imdata:
-        for j in imdata[i]:
+        for j in imdata[i]: # every imdata[i] is dictionary
             print(imdata[i][j]["dn"],"\t", "\t"  , imdata[i][j]["speed"] ,"\t" , imdata[i][j]["mtu"])
+
+# dictionary -> list -> dictionary -> dictionary
 
