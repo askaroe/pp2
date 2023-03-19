@@ -15,11 +15,9 @@ pauses = ['blindinglights_pause.png', 'giant_pause.png', 'humility_pause.png', '
 
 def start(n):
     
-    # Loading first audio file into our player
+    # Loading nth audio file into our player
     mixer.music.load(musics[n])
       
-    # Removing the loaded song from our playlist list
-    # playList.pop(0)
     mixer.music.set_volume(0.2)
     # Playing our music
     mixer.music.play()
