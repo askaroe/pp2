@@ -37,7 +37,7 @@ DISPLAYSURF = pygame.display.set_mode((400,600))
 DISPLAYSURF.fill(WHITE)
 pygame.display.set_caption("Game")
 
-
+# creating an enemy class
 class Enemy(pygame.sprite.Sprite):
       def __init__(self):
         super().__init__() 
@@ -48,12 +48,12 @@ class Enemy(pygame.sprite.Sprite):
       def move(self):
         global SCORE
         self.rect.move_ip(0,SPEED)
-        if (self.rect.bottom > 600):
+        if (self.rect.bottom > 600): # if our enemy will be on the bottom of our screen it will be respawned
             SCORE += 1
             self.rect.top = 0
             self.rect.center = (random.randint(40, SCREEN_WIDTH - 40), 0)
 
-
+# creating a player class
 class Player(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__() 
@@ -71,7 +71,7 @@ class Player(pygame.sprite.Sprite):
               if pressed_keys[K_RIGHT]:
                   self.rect.move_ip(5, 0)
 
-
+# creating a coin class
 class Coin(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__() 
@@ -83,7 +83,7 @@ class Coin(pygame.sprite.Sprite):
     def move(self):
         global COINS
         self.rect.move_ip(0,COINSPEED)
-        if (self.rect.bottom > 600):
+        if (self.rect.bottom > 600): # if our coin will go under the screen it will be respawned
             self.rect.top = 0
             self.rect.center = (random.randint(40, SCREEN_WIDTH - 40), 0)
                   
@@ -118,10 +118,12 @@ while True:
             pygame.quit()
             sys.exit()
 
-
     DISPLAYSURF.blit(background, (0,0))
     scores = font_small.render(str(SCORE), True, BLACK)
     DISPLAYSURF.blit(scores, (10,10))
+    collected = font_small.render(str(SCORE), True, BLACK)
+    DISPLAYSURF.blit(scores, (400 - 30,10))
+    
 
     #Moves and Re-draws all Sprites
     for entity in all_sprites:
@@ -144,14 +146,20 @@ while True:
           pygame.quit()
           sys.exit()        
 
+    # if our player will collide with the coin object what will be:
+    # the collecting sound will be played
+    # the coin object will be destroyed
     if pygame.sprite.spritecollideany(P1, coins):
-          pygame.mixer.Sound('collect.wav').play()
+            pygame.mixer.Sound('collect.wav').play()
+            for coin in coins:
+                coin.kill()
         #   time.sleep(1)
-        
-          COINS += 1
-          pygame.display.update() 
-          
-   
-        
+            COINS += 1
+            pygame.display.update() 
+    if(len(coins) == 0): # if our coin was collected:
+        COIN = Coin()   # new coin object will be created and added to the coins group
+        coins.add(COIN)
+        all_sprites.add(COIN)
+
     pygame.display.update()
     FramePerSec.tick(FPS)
