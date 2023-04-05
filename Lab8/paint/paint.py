@@ -37,7 +37,7 @@ def main():
                 elif event.key == pygame.K_BACKSPACE:
                     mode = eraser
                 elif event.key == pygame.K_w:
-                    drawRectangle(screen, pygame.mouse.get_pos(), mode)
+                    drawRectangle(screen, pygame.mouse.get_pos(), 200, 100, mode)
                 elif event.key == pygame.K_c:
                     drawCircle(screen, pygame.mouse.get_pos(), mode)
             
