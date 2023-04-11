@@ -69,6 +69,9 @@ def main():
                 elif(90 <= mouseX <= 110):
                     if(event.type == pygame.MOUSEBUTTONDOWN and event.button == 1):
                         mode = red
+                elif(600 <= mouseX <= 630):
+                    if(event.type == pygame.MOUSEBUTTONDOWN and event.button == 1):
+                        mode = eraser
                 elif(150 <= mouseX <= 170):
                     if(event.type == pygame.MOUSEBUTTONDOWN and event.button == 1):
                         draw = "line"
@@ -223,4 +226,8 @@ def taskBar():
     rhombusImage = pygame.image.load("rhombus.png")
     rhombusImage = pygame.transform.scale(rhombusImage, (30, 30))
     screen.blit(rhombusImage, (315, 0))
+
+    eraserImage = pygame.image.load("eraser.png")
+    eraserImage = pygame.transform.scale(eraserImage, (30, 30))
+    screen.blit(eraserImage, (600, 0))
 main()
