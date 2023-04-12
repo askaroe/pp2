@@ -101,8 +101,6 @@ def main():
         
 
 def drawLineBetween(screen, start, end, width, color_mode):
-    c1 = max(0, min(255, 2 * start[0] - 256))
-    c2 = max(0, min(255, 2 * start[1]))
     
     color = color_mode
     dx = start[0] - end[0]
