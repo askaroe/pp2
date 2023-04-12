@@ -20,11 +20,11 @@ myClock = pygame.transform.scale(myClock, (600, 600))
 
 
 hour_arrow = pygame.image.load('hour.png')
-hour_arrow = pygame.transform.scale(hour_arrow, (35 // 1.5, 250 // 1.5))
+hour_arrow = pygame.transform.scale(hour_arrow, (23, 166))
 minute_arrow = pygame.image.load('minute.png') # 30:257
-minute_arrow = pygame.transform.scale(minute_arrow, (30 // 1.5, 350 // 1.5))
+minute_arrow = pygame.transform.scale(minute_arrow, (20, 233))
 second_arrow = pygame.image.load('second.png')
-second_arrow = pygame.transform.scale(second_arrow, (25 // 1.5, 400 // 1.5))
+second_arrow = pygame.transform.scale(second_arrow, (16, 266))
 
 
 while not done:
@@ -49,7 +49,7 @@ while not done:
 
         screen.fill((255, 255, 255))
         screen.blit(myClock, (100, 100))
-        screen.blit(second, (399 - int(second.get_width() / 2), 400 - int(second.get_height() / 2)))
+        screen.blit(second, (399 - int(second.get_width() / 2), 400 - int(second.get_height() / 2))) # centering the image
         screen.blit(hour, ((399 - int(hour.get_width() / 2), 400 - int(hour.get_height() / 2))))
         screen.blit(minute, ((399 - int(minute.get_width() / 2), 400 - int(minute.get_height() / 2))))
         pygame.draw.circle(screen, (0, 0, 0), (400, 400), 22)
