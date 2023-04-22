@@ -161,42 +161,42 @@ class Game:
                 wall_rect = pygame.Rect(wall.x * cell_size, wall.y * cell_size, cell_size, cell_size)
                 screen.blit(wall_texture, wall_rect)
         
-        if(self.level >= 6):
+        if(self.level >= 4):
             for wall in range(0, 20):
                 wall_rect = pygame.Rect(0, wall * cell_size, cell_size, cell_size)
                 screen.blit(wall_texture, wall_rect)
                 wall_coordinates.append(Vector2(0, wall))
-
+        if(self.level >= 5):
             for wall in range(0, 20):
                 wall_rect = pygame.Rect(19 * cell_size, wall * cell_size, cell_size, cell_size)
                 screen.blit(wall_texture, wall_rect)
                 wall_coordinates.append(Vector2(19, wall))
-
+        if(self.level >= 6):
             for wall in range(1, 4):
                 wall_rect = pygame.Rect(wall * cell_size, 3 * cell_size, cell_size, cell_size)
                 screen.blit(wall_texture, wall_rect)
                 wall_coordinates.append(Vector2(wall, 3))
-
+        if(self.level >= 7):
             for wall in range(1, 4):
                 wall_rect = pygame.Rect(wall * cell_size, 10 * cell_size, cell_size, cell_size)
                 screen.blit(wall_texture, wall_rect)
                 wall_coordinates.append(Vector2(wall, 10))
-
+        if(self.level >= 8):
             for wall in range(1, 4):
                 wall_rect = pygame.Rect(wall * cell_size, 16 * cell_size, cell_size, cell_size)
                 screen.blit(wall_texture, wall_rect)
                 wall_coordinates.append(Vector2(wall, 16))
-
+        if(self.level >= 9):
             for wall in range(16, 19):
                 wall_rect = pygame.Rect(wall * cell_size, 3 * cell_size, cell_size, cell_size)
                 screen.blit(wall_texture, wall_rect)
                 wall_coordinates.append(Vector2(wall, 3))
-
+        if(self.level >= 10):
             for wall in range(16, 19):
                 wall_rect = pygame.Rect(wall * cell_size, 10 * cell_size, cell_size, cell_size)
                 screen.blit(wall_texture, wall_rect)
                 wall_coordinates.append(Vector2(wall, 10))
-        
+        if(self.level >= 11):
             for wall in range(16, 19):
                 wall_rect = pygame.Rect(wall * cell_size, 16 * cell_size, cell_size, cell_size)
                 screen.blit(wall_texture, wall_rect)
