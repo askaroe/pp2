@@ -202,6 +202,16 @@ class Game:
                 screen.blit(wall_texture, wall_rect)
                 wall_coordinates.append(Vector2(wall, 16))
 
+    def pauseState(self):
+        global isPause
+        if isPause == False:
+            screen.blit(pause, (0, 0, 800, 800))
+            pygame.time.set_timer(SCREEN_UPDATE, 0)
+            isPause = True
+        else:
+            pygame.time.set_timer(SCREEN_UPDATE, snake_speed)
+            isPause = False
+
 
 clock = pygame.time.Clock()
 cell_size = 40
@@ -221,8 +231,9 @@ snake_speed = 150
 wall1 = [Vector2(9, 8), Vector2(9, 9), Vector2(9, 10), Vector2(9, 11)]
 wall_texture = pygame.image.load('cobble4040.png')
 wall_coordinates = []
+pause = pygame.image.load('pause.png')
 
-isPause = True
+isPause = False
 
 
 SCREEN_UPDATE = pygame.USEREVENT
@@ -249,7 +260,6 @@ def start_the_game():
     global nowSeconds
     global seconds
     global user_name
-
     while not done:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -257,6 +267,8 @@ def start_the_game():
             # check for direction
             if(event.type == SCREEN_UPDATE):
                 game.update()
+            if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
+                game.pauseState()
             if event.type == pygame.KEYDOWN and event.key == pygame.K_RIGHT:
                 if direction.x != -1:
                     direction = Vector2(1, 0)
@@ -269,6 +281,13 @@ def start_the_game():
             if event.type == pygame.KEYDOWN and event.key == pygame.K_DOWN:
                 if direction.y != -1:
                     direction = Vector2(0, 1)   
+            if event.type == pygame.KEYDOWN and event.key == pygame.K_i:
+                cur.execute(f''' INSERT INTO postgres.public.snake_scores("user", "user_score") VALUES( '{user_name}', '{game.score}'); ''')
+
+                conn.commit()
+                cur.close()
+                conn.close()
+                done = True
 
         if(game.gameOver() == True): # if our game over returns true, we will end the game
 
