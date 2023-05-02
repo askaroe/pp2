@@ -11,11 +11,11 @@ conn = psycopg2.connect(
 cur = conn.cursor()
 
 def queryData():
-    cur.execute(' SELECT * FROM postgres.public.phone_book ')
+    cur.execute("SELECT * FROM get_records_by_pattern('John')")
     data = cur.fetchall()
 
     for row in data:
-        print("Name: " + str(row[1]) + "\n" + "Number: " + str(row[2]) + "\n")
+        print(row)
 
 def insertData():
     personName = input('Input new username: ')
@@ -30,13 +30,19 @@ def updateData():
     conn.autocommit = True 
     cur.execute("CALL update_data(%s, %s);", (personName, phoneNumber))
 
-# def insertListOfDate():
-#     users = [
-#         ['Chris', '123-456-7890'],
-#         ['Tony', '987-654-3210']
-#     ]
-    
-#     cur.callproc('insert_list_of_users', [users])
+def insertListOfDate():
+    users = [
+        ['Stark', '80789013456'],
+        ['Admin', '80779903663'],
+        ['Sasha', '80779903663p']
+    ]
+    print('The incorrect data')
+    cur.execute(f"CALL insert_list_of_users(ARRAY{users})")
+    cur.execute(" SELECT * FROM postgres.public.phone_book_incorrect_data ")
+    data = cur.fetchall()
+
+    for row in data:
+        print(row)
 
 def getDataFromPagination():
     limit = 3
@@ -70,8 +76,9 @@ print("What do you want to do?\n\
       1. Return data from the table\n\
       2. Insert contact\n\
         2.1 update existing contact\n\
-      3. Query all data from table\n\
-      4. Delete with user name or number")
+      3. Insert list of users\n\
+      4. Query all data from table\n\
+      5. Delete with user name or number")
 x = input("Enter number 1-5\n")
 if(x == '1'):
     queryData()
@@ -80,8 +87,10 @@ elif(x == '2'):
 elif(x == '2.1'):
     updateData()
 elif(x == '3'):
-    getDataFromPagination()
+    insertListOfDate()
 elif(x == '4'):
+    getDataFromPagination()
+elif(x == '5'):
     deleteDataWithNameOrPhone()
 conn.commit()
     
